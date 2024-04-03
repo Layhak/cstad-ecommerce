@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@nextui-org/button": "2.0.26",
+    "@nextui-org/card": "^2.0.24",
     "@nextui-org/code": "2.0.24",
+    "@nextui-org/image": "^2.0.24",
     "@nextui-org/input": "2.1.16",
     "@nextui-org/kbd": "2.0.25",
     "@nextui-org/link": "2.0.26",
@@ -38,5 +40,10 @@
     "tailwind-variants": "^0.1.18",
     "tailwindcss": "3.3.5",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.13"
   }
 }

@@ -281,6 +281,21 @@
     "@react-types/button" "^3.9.0"
     "@react-types/shared" "^3.21.0"
 
+"@nextui-org/card@^2.0.24":
+  version "2.0.24"
+  resolved "https://registry.yarnpkg.com/@nextui-org/card/-/card-2.0.24.tgz#e57764fa91a0711221d32e9d5481d9df902ef9ec"
+  integrity sha512-16uAS0i6+EO+u8aqtmaCXatjovsyuTq51JwCLBlB67OldfgXoYcYl3GaE2VoZdEwxVu1G/qypDfXv29k46nZuA==
+  dependencies:
+    "@nextui-org/react-utils" "2.0.10"
+    "@nextui-org/ripple" "2.0.24"
+    "@nextui-org/shared-utils" "2.0.4"
+    "@nextui-org/use-aria-button" "2.0.6"
+    "@react-aria/button" "^3.8.4"
+    "@react-aria/focus" "^3.14.3"
+    "@react-aria/interactions" "^3.19.1"
+    "@react-aria/utils" "^3.21.1"
+    "@react-types/shared" "^3.21.0"
+
 "@nextui-org/code@2.0.24":
   version "2.0.24"
   resolved "https://registry.yarnpkg.com/@nextui-org/code/-/code-2.0.24.tgz#421361189063edc3db2a0ea29de01a0e04d6ec61"
@@ -297,6 +312,15 @@
   dependencies:
     "@nextui-org/shared-utils" "2.0.4"
     "@nextui-org/system" "2.0.15"
+
+"@nextui-org/image@^2.0.24":
+  version "2.0.24"
+  resolved "https://registry.yarnpkg.com/@nextui-org/image/-/image-2.0.24.tgz#aba9c0a8ae014d0d7e21361c1d30ca9aef13e2da"
+  integrity sha512-bps5D5ki7PoLldb8wcJEf6C4EUFZm3PocLytNaGa7dNxFfaCOD78So+kq+K+0IRusK3yn94K8r31qMvpI3Gg2Q==
+  dependencies:
+    "@nextui-org/react-utils" "2.0.10"
+    "@nextui-org/shared-utils" "2.0.4"
+    "@nextui-org/use-image" "2.0.4"
 
 "@nextui-org/input@2.1.16":
   version "2.1.16"
@@ -527,6 +551,18 @@
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@nextui-org/use-clipboard/-/use-clipboard-2.0.4.tgz#49439ca60368fc70711b4b3ded019c745f38f1ec"
   integrity sha512-rMcaX0QsolOJ1BQbp1T/FVsSPn2m0Ss4Z+bbdS7eM6EFKtJdVJWlpbrST0/kR2UcW1KWeK27NYmtNPF5+hgZMA==
+
+"@nextui-org/use-image@2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@nextui-org/use-image/-/use-image-2.0.4.tgz#5b758355c948d445d0cd89b18177d3d37b683f57"
+  integrity sha512-tomOkrhlhTA45qA/MLh1YmiWVGgJ2KeM0qBSLP1ikVcppc/e9UtkIJjHIGdNCnHZTjoPEh53HzyJeUMlYUM9uw==
+  dependencies:
+    "@nextui-org/use-safe-layout-effect" "2.0.4"
+
+"@nextui-org/use-safe-layout-effect@2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@nextui-org/use-safe-layout-effect/-/use-safe-layout-effect-2.0.4.tgz#92652ea61ab94abf494c98c581297769cc8f29e0"
+  integrity sha512-K7ppEhTfzdVOzbgKaNFEBi4HwRfQ8j+kRBQqsU5yo8bSM+5uv8OUy/mjpEf4i02PUDIBmsgJC4En9S537DXrwg==
 
 "@nextui-org/use-scroll-position@2.0.4":
   version "2.0.4"
@@ -1618,6 +1654,11 @@ eslint-config-next@14.0.2:
     eslint-plugin-jsx-a11y "^6.7.1"
     eslint-plugin-react "^7.33.2"
     eslint-plugin-react-hooks "^4.5.0 || 5.0.0-canary-7118f5dd7-20230705"
+
+eslint-config-prettier@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-9.1.0.tgz#31af3d94578645966c082fcb71a5846d3c94867f"
+  integrity sha512-NSWl5BFQWEPi1j4TjVNItzYV7dZXZ+wP6I6ZhrBGpChQhZRUaElihE9uRRkcbRnNb76UMKDF3r+WTmNcGPKsqw==
 
 eslint-import-resolver-node@^0.3.6, eslint-import-resolver-node@^0.3.9:
   version "0.3.9"
@@ -2892,6 +2933,16 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
+prettier-plugin-tailwindcss@^0.5.13:
+  version "0.5.13"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.5.13.tgz#ee3c1e07848c90abdd1edde36a09366327e31e26"
+  integrity sha512-2tPWHCFNC+WRjAC4SIWQNSOdcL1NNkydXim8w7TDqlZi+/ulZYz2OouAI6qMtkggnPt7lGamboj6LcTMwcCvoQ==
+
+prettier@^3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.2.5.tgz#e52bc3090586e824964a8813b09aba6233b28368"
+  integrity sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==
+
 prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
@@ -3167,6 +3218,7 @@ streamsearch@^1.1.0:
   integrity sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==

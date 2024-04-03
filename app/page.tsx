@@ -1,51 +1,35 @@
-import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code"
-import { button as buttonStyles } from "@nextui-org/theme";
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
+'use client'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { BASE_URL } from '@/lib/constants'
+import CardComponents from '@/components/card/card'
 
 export default function Home() {
-	return (
-		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-			<div className="inline-block max-w-lg text-center justify-center">
-				<h1 className={title()}>Make&nbsp;</h1>
-				<h1 className={title({ color: "violet" })}>beautiful&nbsp;</h1>
-				<br />
-				<h1 className={title()}>
-					websites regardless of your design experience.
-				</h1>
-				<h2 className={subtitle({ class: "mt-4" })}>
-					Beautiful, fast and modern React UI library.
-				</h2>
-			</div>
-
-			<div className="flex gap-3">
-				<Link
-					isExternal
-					href={siteConfig.links.docs}
-					className={buttonStyles({ color: "primary", radius: "full", variant: "shadow" })}
-				>
-					Documentation
-				</Link>
-				<Link
-					isExternal
-					className={buttonStyles({ variant: "bordered", radius: "full" })}
-					href={siteConfig.links.github}
-				>
-					<GithubIcon size={20} />
-					GitHub
-				</Link>
-			</div>
-
-			<div className="mt-8">
-				<Snippet hideSymbol hideCopyButton variant="flat">
-					<span>
-						Get started by editing <Code color="primary">app/page.tsx</Code>
-					</span>
-				</Snippet>
-			</div>
-		</section>
-	);
+    const [products, setProducts] = useState([])
+    const router = useRouter()
+    useEffect(() => {
+        fetch(`${BASE_URL}api/products/`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                // Replace 'Your_Authorization_Key' with your actual authorization key
+                Authorization:
+                    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE0MjI0Nzc4LCJpYXQiOjE3MTIwNjQ3NzgsImp0aSI6IjE4ZjA3OWUyMTc0YjRlNGNhN2EzMjNlNjdlMTExZjJjIiwidXNlcl9pZCI6OH0.39yi-CSGferjFGHDs2F2aeIYexf4uboOI7-cVjI-YlE',
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                console.log(data.results)
+                // setProducts(data)
+            })
+    }, [])
+    return (
+        <section>
+            <CardComponents />
+            {/*{products.map((product: any, index) => (*/}
+            {/*    <h1>Hello</h1>*/}
+            {/*))}*/}
+        </section>
+    )
 }
