@@ -1,6 +1,6 @@
 version: '3'
 services:
-  naikim:
+  layhak-ecommerce:
     #image: it for name your image after docker build -t nameyourimages .
     build:
       context: .
