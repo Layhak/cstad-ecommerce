@@ -3,9 +3,8 @@ import { Metadata, Viewport } from 'next'
 import { siteConfig } from '@/config/site'
 import { fontKantumruy, fontMono, fontSans } from '@/config/fonts'
 import { Providers } from './providers'
-import { Navbar } from '@/components/navbar'
-import { Link } from '@nextui-org/link'
 import clsx from 'clsx'
+import Sidebar from '@/components/sidebar/sidebar'
 
 export const metadata: Metadata = {
     title: {
@@ -46,25 +45,10 @@ export default function RootLayout({
                 <Providers
                     themeProps={{ attribute: 'class', defaultTheme: 'dark' }}
                 >
-                    <div className="relative flex h-screen flex-col">
-                        <Navbar />
-                        <main className="container mx-auto max-w-7xl flex-grow px-6 pt-16">
-                            {children}
-                        </main>
-                        <footer className="flex w-full items-center justify-center py-3">
-                            <Link
-                                isExternal
-                                className="flex items-center gap-1 text-current"
-                                href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                                title="nextui.org homepage"
-                            >
-                                <span className="text-default-600">
-                                    Powered by
-                                </span>
-                                <p className="text-primary">NextUI</p>
-                            </Link>
-                        </footer>
-                    </div>
+                    <main className=" container flex max-w-7xl flex-grow items-center gap-5">
+                        <Sidebar />
+                        {children}
+                    </main>
                 </Providers>
             </body>
         </html>

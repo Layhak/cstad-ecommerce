@@ -1,7 +1,7 @@
 .card{
-    @apply w-[300px] py-4
+    @apply min-w-[300px] py-4 h-[333px]
 }
 
 .cardHeader{
-    @apply flex-col items-start px-4 pb-0 pt-2
+    @apply flex-row items-center px-4 pb-0 pt-2 justify-between
 }

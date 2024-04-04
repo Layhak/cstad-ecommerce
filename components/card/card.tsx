@@ -5,26 +5,59 @@ import styles from './style.module.css'
 import { Button } from '@nextui-org/button'
 import { Link } from '@nextui-org/link'
 
-export default function CardComponents() {
+type ProductType = {
+    category: string
+    image: string
+    name: string
+    price: string
+    seller: string
+    onClick?: () => void
+}
+export default function CardComponents({
+    category,
+    image,
+    name,
+    price,
+    seller,
+    onClick,
+}: ProductType) {
     return (
-        <Card className={styles.card} isPressable as={Link} href={'#'}>
+        <Card onClick={onClick} className={styles.card} isPressable as={Link}>
             <CardHeader className={styles.cardHeader}>
-                <p className="text-tiny font-bold uppercase">Daily Mix</p>
-                <small className="text-default-500">12 Tracks</small>
-                <h4 className="text-large font-bold">Frontend Radio</h4>
+                <div className={'basis-[70%]'}>
+                    <h4 className="line-clamp-1 text-large font-bold">
+                        {name ?? 'Product name'}
+                    </h4>
+                    <small className="text-default-500">
+                        {seller ?? 'Seller name'}
+                    </small>
+                </div>
+                <div className=" basis-[30%] rounded-full bg-warning px-2 font-normal uppercase text-gray-50">
+                    <h1
+                        className={
+                            'line-clamp-1 text-center text-[0.5rem] font-bold'
+                        }
+                    >
+                        {category ?? 'Category name'}
+                    </h1>
+                </div>
             </CardHeader>
-            <CardBody className="overflow-visible py-2">
+            <CardBody className=" w-full justify-self-center overflow-visible py-2 opacity-100 dark:opacity-80">
                 <Image
                     alt="Card background"
-                    className="rounded-xl object-cover"
-                    src="https://nextui.org/images/hero-card-complete.jpeg"
+                    className="h-56 w-full justify-self-center rounded-xl object-cover  "
                     width={'100%'}
+                    src={
+                        image ??
+                        'https://nextui.org/images/hero-card-complete.jpeg'
+                    }
                 />
             </CardBody>
-            <CardFooter className="absolute bottom-0 z-10 justify-between border-t-1 border-zinc-500 bg-gray-800/60 dark:border-zinc-100/50 dark:bg-gray-50/30">
+            <CardFooter className="absolute bottom-0 z-10 justify-between border-t-1 border-zinc-500 bg-gray-800/60 ">
                 <div>
-                    <p className="text-tiny text-gray-50">Available soon.</p>
-                    <p className="text-tiny text-gray-50 dark ">ស្តុកថ្មី</p>
+                    <p className="text-large font-bold text-gray-200">
+                        ${price ?? '11'}
+                    </p>
                 </div>
                 <Button
                     className="text-tiny"

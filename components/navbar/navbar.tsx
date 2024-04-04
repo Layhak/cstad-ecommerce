@@ -16,8 +16,9 @@ import { siteConfig } from '@/config/site'
 import NextLink from 'next/link'
 import clsx from 'clsx'
 
-import { ThemeSwitch } from '@/components/theme-switch'
-import { Logo, NewIcon, UserIcon } from '@/components/icons'
+import { ThemeSwitch } from '@/components/theme/theme-switch'
+import { NewIcon, UserIcon } from '@/components/icon/icons'
+import { Image } from '@nextui-org/image'
 
 export const Navbar = () => {
     return (
@@ -33,8 +34,13 @@ export const Navbar = () => {
                         className="flex items-center justify-start gap-1"
                         href="/"
                     >
-                        <Logo />
-                        <p className="font-bold text-inherit">ACME</p>
+                        <Image
+                            src={'https://istad.co/resources/img/CSTAD_120.png'}
+                            width={40}
+                            height={40}
+                            alt="logo"
+                        />
+                        <p className="font-bold text-inherit">C-SHOP</p>
                     </NextLink>
                 </NavbarBrand>
                 <ul className="ml-2 hidden justify-start gap-4 lg:flex">
@@ -59,14 +65,14 @@ export const Navbar = () => {
                 className="hidden basis-1/5 sm:flex sm:basis-full"
                 justify="end"
             >
-                <NavbarItem className="hidden gap-2 sm:flex">
+                <NavbarItem className="hidden gap-2 lg:flex">
                     <ThemeSwitch />
                 </NavbarItem>
-                <NavbarItem className="hidden gap-5 md:flex">
+                <NavbarItem className="hidden gap-5 lg:flex">
                     <Button
                         isExternal
                         as={Link}
-                        className="bg-primary text-sm font-normal dark:bg-primary"
+                        className="bg-primary text-sm font-normal text-gray-50"
                         href={'#'}
                         startContent={<UserIcon />}
                         variant="solid"
@@ -76,7 +82,7 @@ export const Navbar = () => {
                     <Button
                         isExternal
                         as={Link}
-                        className="bg-success text-sm font-normal dark:bg-success"
+                        className="bg-success text-sm font-normal text-gray-50"
                         href={'#'}
                         startContent={<NewIcon />}
                         variant="solid"
@@ -86,7 +92,7 @@ export const Navbar = () => {
                 </NavbarItem>
             </NavbarContent>
 
-            <NavbarContent className="basis-1 pl-4 sm:hidden" justify="end">
+            <NavbarContent className="basis-1 pl-4 lg:hidden" justify="end">
                 <ThemeSwitch />
                 <NavbarMenuToggle />
             </NavbarContent>
@@ -95,22 +101,37 @@ export const Navbar = () => {
                 <div className="mx-4 mt-2 flex flex-col gap-2">
                     {siteConfig.navItems.map((item, index) => (
                         <NavbarMenuItem key={`${item}-${index}`}>
-                            <Link
-                                color={
-                                    index === 2
-                                        ? 'primary'
-                                        : index ===
-                                            siteConfig.navItems.length - 1
-                                          ? 'danger'
-                                          : 'foreground'
-                                }
-                                href="#"
-                                size="lg"
-                            >
+                            <Link color={'foreground'} href="#" size="lg">
                                 {item.label}
                             </Link>
                         </NavbarMenuItem>
                     ))}
+                    <NavbarMenuItem className={'flex gap-5'}>
+                        <Link rel="stylesheet" href="#">
+                            <Button
+                                isExternal
+                                as={Link}
+                                className="bg-primary text-sm font-normal dark:bg-primary"
+                                href={'#'}
+                                startContent={<UserIcon />}
+                                variant="solid"
+                            >
+                                Login
+                            </Button>
+                        </Link>
+                        <Link rel="stylesheet" href="#">
+                            <Button
+                                isExternal
+                                as={Link}
+                                className="bg-primary text-sm font-normal dark:bg-primary"
+                                href={'#'}
+                                startContent={<UserIcon />}
+                                variant="solid"
+                            >
+                                Login
+                            </Button>
+                        </Link>
+                    </NavbarMenuItem>
                 </div>
             </NavbarMenu>
         </NextUINavbar>
