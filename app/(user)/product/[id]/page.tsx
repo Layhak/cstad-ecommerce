@@ -4,12 +4,35 @@ import { Button } from '@nextui-org/button'
 import CardDetail from '@/components/product/productDetailCard'
 import { Link } from '@nextui-org/link'
 import { substr } from 'stylis'
+import { Metadata, ResolvingMetadata } from 'next'
 
 type Props = {
     params: { id: string }
     searchParams: { [key: string]: string | string[] | undefined }
 }
+export async function generateMetadata(
+    { params, searchParams }: Props,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    // read route params
+    const id = params.id
 
+    // fetch data
+    const product = await fetch(`${BASE_URL}api/products/${id}`).then((res) =>
+        res.json()
+    )
+
+    // optionally access and extend (rather than replace) parent metadata
+    // const previousImages = (await parent).openGraph?.images || [];
+
+    return {
+        title: product.title,
+        description: product.description,
+        openGraph: {
+            images: product.image,
+        },
+    }
+}
 const getData = async (id: string) => {
     const res = await fetch(`${BASE_URL}api/products/${id}/`)
     const data = await res.json()

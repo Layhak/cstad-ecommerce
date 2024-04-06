@@ -217,6 +217,7 @@ export default function App() {
     }
     return (
         <div>
+            <h1 className={'text-center text-5xl font-bold'}>Our Product </h1>
             <section className="my-5 grid min-h-screen grid-cols-1 gap-x-5 gap-y-2.5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {products.map((product: any) => (
                     <CardComponents

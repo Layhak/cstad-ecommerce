@@ -1,6 +1,5 @@
 import '@/styles/globals.css'
 import { Metadata, Viewport } from 'next'
-import { siteConfig } from '@/config/site'
 import { fontKantumruy, fontMono, fontSans } from '@/config/fonts'
 import { Providers } from './providers'
 import { Navbar } from '@/components/navbar/navbar'
@@ -8,16 +7,13 @@ import clsx from 'clsx'
 import Footer from '@/components/footer/footer'
 
 export const metadata: Metadata = {
-    title: {
-        default: siteConfig.name,
-        template: `%s - ${siteConfig.name}`,
-    },
-    description: siteConfig.description,
-
-    icons: {
-        icon: '/favicon.ico',
-        shortcut: '/favicon-16x16.png',
-        apple: '/apple-touch-icon.png',
+    title: 'Ecommerce Web',
+    description: 'Ecommerce Website is the web application for selling product',
+    openGraph: {
+        title: 'Ecommerce Web',
+        description:
+            'Ecommerce Website is the web application for selling product',
+        images: 'https://store.istad.co/media/brand_images/image.png',
     },
 }
 export const viewport: Viewport = {

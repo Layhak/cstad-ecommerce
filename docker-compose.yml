@@ -1,10 +1,19 @@
 version: '3'
 services:
-  layhak-ecommerce:
-    #image: it for name your image after docker build -t nameyourimages .
+  ecommerce_by_layhak:
+    #	  image: naemyouimages
+    container_name: ecommerce_by_layhak
     build:
       context: .
       dockerfile: Dockerfile
     restart: always
     ports:
-      - 50002:3000
+      - 3213:3000
+    environment:
+      - NODE_ENV=production
+      - GENERATE_SOURCEMAP=false
+    networks:
+      - data_analytics
+networks:
+  data_analytics:
+    external: true

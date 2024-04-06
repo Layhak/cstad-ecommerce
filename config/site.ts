@@ -10,20 +10,12 @@ export const siteConfig = {
             href: '/',
         },
         {
-            label: 'Docs',
-            href: '/docs',
-        },
-        {
-            label: 'Pricing',
-            href: '/pricing',
-        },
-        {
-            label: 'Blog',
-            href: '/blog',
-        },
-        {
             label: 'About',
             href: '/about',
+        },
+        {
+            label: 'Policy',
+            href: '/policy',
         },
     ],
     adminPageItems: [
