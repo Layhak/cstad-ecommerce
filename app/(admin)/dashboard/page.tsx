@@ -114,9 +114,9 @@ export default function Products() {
     const [totalRows, setTotalRows] = useState(0)
     const [perPage, setPerPage] = useState(10) // Set default items per page
     const router = useRouter()
-    const UpdateModal = useDisclosure()
-    const DeleteModal = useDisclosure()
+    const [loading, setLoading] = useState(false)
     const CreateModal = useDisclosure()
+    const DeleteModal = useDisclosure()
     const [selectedProduct, setSelectedProduct] =
         useState<ProductPostType | null>(null)
 
@@ -125,6 +125,33 @@ export default function Products() {
         setProducts(data)
         console.log(data)
         setTotalRows(totalRows)
+    }
+    const handleDeleteProduct = async (productId: number) => {
+        try {
+            const response = await fetch(
+                `${BASE_URL}api/products/${productId}/`,
+                {
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: `Bearer ${ACCESS_TOKEN}`,
+                    },
+                }
+            )
+
+            if (!response.ok) {
+                // If the server response is not ok, throw an error
+                throw new Error('Failed to delete the product')
+            }
+
+            // Provide user feedback
+            console.log('Product deleted successfully!')
+            toast.success('Product deleted successfully!')
+            // Optionally: refresh the product list to reflect the deletion
+            // You might want to call a function that fetches the updated product list here
+        } catch (error) {
+            console.error('Error deleting product:', error)
+            toast.error('Error deleting product. Please try again.')
+        }
     }
 
     // Fetch initial data
@@ -221,20 +248,41 @@ export default function Products() {
                         </Tooltip>
                         <Modal
                             isOpen={DeleteModal.isOpen}
-                            size={'4xl'}
                             onOpenChange={DeleteModal.onOpenChange}
+                            placement="top-center"
+                            isDismissable={false}
                         >
                             <ModalContent>
-                                {() => (
+                                {(onClose) => (
                                     <>
-                                        <ModalBody className={'p-8'}>
-                                            <Image
-                                                alt={row.name}
-                                                src={row.image}
+                                        <ModalHeader className="flex flex-col gap-1 ">
+                                            Are you sure you want to delete?
+                                        </ModalHeader>
+                                        <ModalBody>
+                                            <div
                                                 className={
-                                                    ' max-h-[750px] w-full min-w-[830px] rounded-none'
+                                                    'flex justify-between'
                                                 }
-                                            />
+                                            >
+                                                <Button
+                                                    color="primary"
+                                                    onPress={() => {
+                                                        handleDeleteProduct(
+                                                            row.id
+                                                        )
+                                                        onClose()
+                                                    }}
+                                                >
+                                                    Yes
+                                                </Button>
+                                                <Button
+                                                    color="danger"
+                                                    variant="flat"
+                                                    onPress={onClose}
+                                                >
+                                                    No
+                                                </Button>
+                                            </div>
                                         </ModalBody>
                                     </>
                                 )}
@@ -314,7 +362,7 @@ export default function Products() {
                         {(onClose) => (
                             <>
                                 <ModalHeader className="flex flex-col gap-1 ">
-                                    Update the product
+                                    Create the product
                                 </ModalHeader>
                                 <ModalBody>
                                     <Formik

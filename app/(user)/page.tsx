@@ -230,7 +230,6 @@ export default function App() {
                     />
                 ))}
             </section>
-
             {totalPages > 1 && (
                 <div className={'flex justify-end'}>
                     <Pagination
@@ -243,6 +242,7 @@ export default function App() {
                     />
                 </div>
             )}
+            <ReviewPage />
         </div>
     )
 }
