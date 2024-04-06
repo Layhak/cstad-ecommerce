@@ -1,5 +1,4 @@
 import React from 'react'
-import { BASE_URL } from '@/lib/constants'
 import { Button } from '@nextui-org/button'
 import CardDetail from '@/components/product/productDetailCard'
 import { Link } from '@nextui-org/link'
@@ -18,9 +17,9 @@ export async function generateMetadata(
     const id = params.id
 
     // fetch data
-    const product = await fetch(`${BASE_URL}api/products/${id}`).then((res) =>
-        res.json()
-    )
+    const product = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}api/products/${id}`
+    ).then((res) => res.json())
 
     // optionally access and extend (rather than replace) parent metadata
     // const previousImages = (await parent).openGraph?.images || [];
@@ -34,7 +33,9 @@ export async function generateMetadata(
     }
 }
 const getData = async (id: string) => {
-    const res = await fetch(`${BASE_URL}api/products/${id}/`)
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}api/products/${id}/`
+    )
     const data = await res.json()
     console.log(data)
     return data

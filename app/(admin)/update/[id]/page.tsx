@@ -1,4 +1,3 @@
-import { BASE_URL } from '@/lib/constants'
 import UpdateForm from '@/components/form/update'
 
 export type PropsParams = {
@@ -8,7 +7,9 @@ export type PropsParams = {
     searchParams: any
 }
 const getData = async (id: number) => {
-    const res = await fetch(`${BASE_URL}api/products/${id}/`)
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}api/products/${id}/`
+    )
     const data = await res.json()
     console.log(data)
     return data

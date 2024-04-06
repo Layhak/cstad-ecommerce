@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import DataTable, { TableColumn } from 'react-data-table-component'
 import { useRouter } from 'next/navigation' // Ensure this is 'next/router'
-import { ACCESS_TOKEN, BASE_URL } from '@/lib/constants'
 import { Image } from '@nextui-org/image'
 import { Tooltip } from '@nextui-org/tooltip'
 import { toast, ToastContainer } from 'react-toastify'
@@ -97,7 +96,9 @@ const validationSchema = Yup.object().shape({
 // Updated fetchProducts function to accept page and perPage parameters
 const fetchProducts = async (page: number) => {
     try {
-        const res = await fetch(`${BASE_URL}api/products/?page=${page}`)
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}api/products/?page=${page}`
+        )
         if (!res.ok) {
             throw new Error('Failed to fetch products')
         }
@@ -129,11 +130,11 @@ export default function Products() {
     const handleDeleteProduct = async (productId: number) => {
         try {
             const response = await fetch(
-                `${BASE_URL}api/products/${productId}/`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}api/products/${productId}/`,
                 {
                     method: 'DELETE',
                     headers: {
-                        Authorization: `Bearer ${ACCESS_TOKEN}`,
+                        Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
                     },
                 }
             )
@@ -313,27 +314,33 @@ export default function Products() {
         formData.append('name', name)
         formData.append('image', file)
 
-        const rest = await fetch(`${BASE_URL}api/file/${typeFile}/`, {
-            method: 'POST',
-            headers: {
-                Authorization: `Bearer ${ACCESS_TOKEN}`,
-            },
-            body: formData,
-        })
+        const rest = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}api/file/${typeFile}/`,
+            {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
+                },
+                body: formData,
+            }
+        )
 
         const data = await rest.json()
         return data.image
     }
 
     const handleSubmitProduct = async (value: ProductPostType) => {
-        const res = await fetch(`${BASE_URL}api/products/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${ACCESS_TOKEN}`,
-            },
-            body: JSON.stringify(value),
-        })
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}api/products/`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
+                },
+                body: JSON.stringify(value),
+            }
+        )
 
         const data = await res.json()
 

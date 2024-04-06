@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { Button } from '@nextui-org/button'
 import * as Yup from 'yup'
-import { ACCESS_TOKEN, BASE_URL } from '@/lib/constants'
 import { useRouter } from 'next/navigation'
 import { Image } from '@nextui-org/image'
 
@@ -56,13 +55,16 @@ export default function UpdateForm({
         formData.append('name', name)
         formData.append('image', file)
 
-        const rest = await fetch(`${BASE_URL}api/file/${typeFile}/`, {
-            method: 'POST',
-            headers: {
-                Authorization: `Bearer ${ACCESS_TOKEN}`,
-            },
-            body: formData,
-        })
+        const rest = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}api/file/${typeFile}/`,
+            {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
+                },
+                body: formData,
+            }
+        )
 
         const data = await rest.json()
         return data.image
@@ -81,12 +83,12 @@ export default function UpdateForm({
             }
             console.log('productPost', productPost)
             const response = await fetch(
-                `${BASE_URL}api/products/${productPost.id}/`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}api/products/${productPost.id}/`,
                 {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${ACCESS_TOKEN}`,
+                        Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
                     },
                     body: JSON.stringify(productPost),
                 }

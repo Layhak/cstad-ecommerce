@@ -1,6 +1,5 @@
 'use client'
 import React, { useCallback, useEffect, useState } from 'react'
-import { BASE_URL } from '@/lib/constants'
 import { useRouter } from 'next/navigation'
 import CardComponents from '@/components/product/productCard'
 import { Pagination } from '@nextui-org/pagination'
@@ -19,7 +18,7 @@ export default function App() {
         setIsLoading(true)
         try {
             const response = await fetch(
-                `${BASE_URL}api/products/?page=${currentPage}`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}api/products/?page=${currentPage}`,
                 {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json' },
