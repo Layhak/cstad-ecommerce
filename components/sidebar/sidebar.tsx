@@ -14,8 +14,8 @@ const Sidebar = () => {
     return (
         <div
             className={` ${
-                open ? 'w-72' : 'w-20 '
-            } bg-dark-purple relative h-screen  border-r-2  pt-8 duration-300`}
+                open ? 'w-80' : 'w-16 '
+            } bg-dark-purple relative min-h-screen  border-r-2  pt-8 duration-300`}
         >
             {/*     <img*/}
             {/*         src="https://istad.co/resources/img/CSTAD_120.png"*/}

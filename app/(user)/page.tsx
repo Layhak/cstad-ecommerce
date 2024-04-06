@@ -2,8 +2,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { BASE_URL } from '@/lib/constants'
 import { useRouter } from 'next/navigation'
-import CardComponents from '@/components/card/card'
+import CardComponents from '@/components/product/productCard'
 import { Pagination } from '@nextui-org/pagination'
+import ReviewPage from '@/components/review/review'
 
 export default function App() {
     const [products, setProducts] = useState([])
@@ -205,7 +206,14 @@ export default function App() {
 
     if (errored) {
         // No products available UI
-        return <div>No products available.</div>
+        return (
+            <div className={'place-content-centern grid '}>
+                <h1 className={'text-center text-3xl'}>
+                    No products available.
+                </h1>
+                <ReviewPage />
+            </div>
+        )
     }
     return (
         <div>
@@ -222,15 +230,18 @@ export default function App() {
                     />
                 ))}
             </section>
+
             {totalPages > 1 && (
-                <Pagination
-                    total={totalPages}
-                    initialPage={1}
-                    page={currentPage}
-                    onChange={(page) => setCurrentPage(page)}
-                    loop
-                    showControls
-                />
+                <div className={'flex justify-end'}>
+                    <Pagination
+                        total={totalPages}
+                        initialPage={1}
+                        page={currentPage}
+                        onChange={(page) => setCurrentPage(page)}
+                        loop
+                        showControls
+                    />
+                </div>
             )}
         </div>
     )

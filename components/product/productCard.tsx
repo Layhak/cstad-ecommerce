@@ -35,7 +35,7 @@ export default function CardComponents({
                 <div className=" basis-[30%] rounded-full bg-warning px-2 font-normal uppercase text-gray-50">
                     <h1
                         className={
-                            'line-clamp-1 text-center text-[0.5rem] font-bold'
+                            'line-clamp-1 text-center text-[0.6rem] font-bold text-gray-800'
                         }
                     >
                         {category ?? 'Category name'}

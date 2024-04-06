@@ -17,7 +17,7 @@ import NextLink from 'next/link'
 import clsx from 'clsx'
 
 import { ThemeSwitch } from '@/components/theme/theme-switch'
-import { NewIcon, UserIcon } from '@/components/icon/icons'
+import { UserIcon } from '@/components/icon/icons'
 import { Image } from '@nextui-org/image'
 
 export const Navbar = () => {
@@ -69,26 +69,16 @@ export const Navbar = () => {
                     <ThemeSwitch />
                 </NavbarItem>
                 <NavbarItem className="hidden gap-5 lg:flex">
-                    <Button
-                        isExternal
-                        as={Link}
-                        className="bg-primary text-sm font-normal text-gray-50"
-                        href={'#'}
-                        startContent={<UserIcon />}
-                        variant="solid"
-                    >
-                        Login
-                    </Button>
-                    <Button
-                        isExternal
-                        as={Link}
-                        className="bg-success text-sm font-normal text-gray-50"
-                        href={'#'}
-                        startContent={<NewIcon />}
-                        variant="solid"
-                    >
-                        Register
-                    </Button>
+                    <Link href={'/dashboard'}>
+                        <Button
+                            className="bg-primary text-sm font-normal text-gray-50"
+                            href={'/dashboard'}
+                            startContent={<UserIcon />}
+                            variant="solid"
+                        >
+                            Go to Dashboard
+                        </Button>
+                    </Link>
                 </NavbarItem>
             </NavbarContent>
 
@@ -107,28 +97,14 @@ export const Navbar = () => {
                         </NavbarMenuItem>
                     ))}
                     <NavbarMenuItem className={'flex gap-5'}>
-                        <Link rel="stylesheet" href="#">
+                        <Link href="/dashboard">
                             <Button
-                                isExternal
-                                as={Link}
                                 className="bg-primary text-sm font-normal dark:bg-primary"
-                                href={'#'}
+                                href={'/dashboard'}
                                 startContent={<UserIcon />}
                                 variant="solid"
                             >
-                                Login
-                            </Button>
-                        </Link>
-                        <Link rel="stylesheet" href="#">
-                            <Button
-                                isExternal
-                                as={Link}
-                                className="bg-primary text-sm font-normal dark:bg-primary"
-                                href={'#'}
-                                startContent={<UserIcon />}
-                                variant="solid"
-                            >
-                                Login
+                                Go to Dashboard
                             </Button>
                         </Link>
                     </NavbarMenuItem>
